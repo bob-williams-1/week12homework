@@ -12,6 +12,7 @@ var connection = mysql.createConnection({
     database: "Bamazon"
 });
 
+
 //Functions
 function displayAll() {
     //show all ids, names, and products from database.

@@ -25,6 +25,7 @@
 
 DROP TABLE IF EXISTS `Products`;
 
+
 CREATE TABLE `Products` (
   `ItemID` int(10) NOT NULL AUTO_INCREMENT,
   `ProductName` varchar(50) NOT NULL,
