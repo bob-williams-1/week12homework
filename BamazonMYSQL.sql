@@ -8,6 +8,7 @@ CREATE TABLE Products(
     Price DECIMAL(10) NOT NULL,
     StockQuantity INTEGER(10),
     primary key (ItemId)
+    
 );
 /*syntax for creating new product*/
 INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity) VALUES('Chocolate Chip Cookies','Food',1.99,200);
