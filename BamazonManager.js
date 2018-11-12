@@ -17,17 +17,17 @@ var connection = mysql.createConnection({
 
 //Functions
 function displayAll() {
-    //show all ids, names, and products from database.
+ 
     connection.query('SELECT * FROM Products', function(error, response) {
         if (error) { console.log(error) };
         //New instance of our constructor
         var theDisplayTable = new Table({
             //declare the value categories
-            head: ['Item ID', 'Product Name', 'Category', 'Price', 'Quantity'],
+            head: ['Item ID', 'Product Name', 'Price', 'Quantity'],
             //set widths to scale
             colWidths: [10, 30, 18, 10, 14]
         });
-        //for each row of the loop
+
         for (i = 0; i < response.length; i++) {
             //push data to table
             theDisplayTable.push(
@@ -42,12 +42,8 @@ function displayAll() {
 
 function inquireForUpdates() {
     //inquire for input
-    inquirer.prompt([{
-        name: "action",
-        type: "list",
-        message: "Choose an option below to manage your store:",
-        choices: ["Restock Inventory", "Add New Product", "Remove An Existing Product"]
-    }]).then(function(answers) {
+    xisting Product"]
+
         //select user response, launch corresponding function
         switch (answers.action) {
 
@@ -68,13 +64,7 @@ function inquireForUpdates() {
 
 function restockRequest() {
     //gather data from user
-    inquirer.prompt([
-
-        {
-            name: "ID",
-            type: "input",
-            message: "What is the item number of the item you wish to restock?"
-        }, {
+    
             name: 'Quantity',
             type: 'input',
             message: "How many would you like to add?"
