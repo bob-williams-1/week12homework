@@ -13,6 +13,8 @@ var connection = mysql.createConnection({
 });
 
 
+
+
 //Functions
 function displayAll() {
     //show all ids, names, and products from database.
