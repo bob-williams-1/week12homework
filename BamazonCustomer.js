@@ -14,18 +14,17 @@ var connection = mysql.createConnection({
 
 //Functions
 function displayAll() {
-    //show all ids, names, and products from database.
+  
     connection.query('SELECT * FROM Products', function(error, response) {
         if (error) { console.log(error) };
         //New instance of our constructor
         var theDisplayTable = new Table({
-            //declare the value categories
-            head: ['Item ID', 'Product Name', 'Category', 'Price', 'Quantity'],
+           
+            head: ['Item ID', , 'Category', 'Price', 'Quantity'],
             //set widths to scale
             colWidths: [10, 30, 18, 10, 14]
         });
-        //for each row of the loop
-        for (i = 0; i < response.length; i++) {
+    
             //push data to table
             theDisplayTable.push(
                 [response[i].ItemID, response[i].ProductName, response[i].DepartmentName, response[i].Price, response[i].StockQuantity]
@@ -37,9 +36,8 @@ function displayAll() {
     });
 
 
-}; //end displayAll
 function inquireForPurchase() {
-    //get item ID and desired quantity from user. Pass to purchase from Database
+    
     inquirer.prompt([
 
         {
@@ -59,14 +57,13 @@ function inquireForPurchase() {
         purchaseFromDatabase(IDDesired, quantityDesired);
     });
 
-}; //end inquireForPurchase
 
 function purchaseFromDatabase(ID, quantityNeeded) {
     //check quantity of desired purchase. Minus quantity of the itemID from database if possible. Else inform user "Quantity desired not in stock" 
     connection.query('SELECT * FROM Products WHERE ItemID = ' + ID, function(error, response) {
         if (error) { console.log(error) };
 
-        //if in stock
+
         if (quantityNeeded <= response[0].StockQuantity) {
             //calculate cost
             var totalCost = response[0].Price * quantityNeeded;
